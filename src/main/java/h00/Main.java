@@ -44,11 +44,44 @@ public class Main {
         Robot alfred = new Robot(4, 4, RIGHT, 0, RobotFamily.SQUARE_BLUE);
 
         // -- Kaspars's first act of craziness --
-        // TODO: H4.1 - remove if implemented
-        crash();
+        kaspar.turnLeft();
+        kaspar.turnLeft();
+        kaspar.putCoin();
+        for (int i = 0; i < 4; i++) {
+            kaspar.move();
+            kaspar.putCoin();
+        }
+        kaspar.turnLeft();
+        for (int i = 0; i < 4; i++) {
+            kaspar.move();
+            kaspar.putCoin();
+        }
+        kaspar.turnLeft();
+        kaspar.move();
 
         // -- Alfred's try of heroism --
-        // TODO: H4.2 - remove if implemented
-        crash();
+        while (!alfred.isFacingDown()) {
+            alfred.turnLeft();
+        }
+        while (alfred.isFrontClear()) {
+            alfred.pickCoin();
+            alfred.move();
+        }
+        while (!alfred.isFacingLeft()) {
+            alfred.turnLeft();
+        }
+        while (alfred.isFrontClear()) {
+            alfred.pickCoin();
+            alfred.move();
+        }
+        while (!alfred.isFacingUp()) {
+            alfred.turnLeft();
+        }
+        alfred.pickCoin();
+        alfred.move();
+        while (kaspar.hasAnyCoins()) {
+            kaspar.putCoin();
+            alfred.turnLeft();
+        }
     }
 }
